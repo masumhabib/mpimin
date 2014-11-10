@@ -46,6 +46,9 @@ endif()
 
 # Libraries
 # -----------------------------------------------------------------------------
+# MPI
+find_package(MPI REQUIRED)
+
 # Boost
 # Shared linking of libboost_python is required for mpi::communicator
 # to work both in python and C++.
@@ -81,6 +84,7 @@ list(APPEND MPIMIN_INCLUDE_DIRS ${CMAKE_BINARY_DIR}/CMakeFiles/${PROJECT_NAME}.d
 
 include_directories(${MPIMIN_INCLUDE_DIRS})
 include_directories(${Boost_INCLUDE_DIR})
+include_directories(${MPI_INCLUDE_PATH})
 
 # -------- <MPIMIN C++ Executable> ------------------------------------------------
 # sources
@@ -91,7 +95,7 @@ add_executable(mpimin ${MPIMIN_SOURCES} ${MPIMIN_HEADERS})
 
 # linking
 target_link_libraries (mpimin ${Boost_MPI_LIBRARIES})
-target_link_libraries (tmf ${Boost_SERIALIZATION_LIBRARIES})
+target_link_libraries (mpimin ${Boost_SERIALIZATION_LIBRARIES})
 
 # Prepare mpimin package
 add_custom_command(
