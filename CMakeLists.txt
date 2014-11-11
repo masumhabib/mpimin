@@ -16,8 +16,8 @@ set(CMAKE_VERBOSE_MAKEFILE      off)
 #set(CMAKE_BUILD_TYPE "Debug")
 
 
-# Add local usr path for locally compiled libraries
-set(CMAKE_PREFIX_PATH $ENV{HOME}/usr)
+# Add machine specific local usr path for locally compiled libraries
+include(cmake/machines/rivanna)
 
 # Start configuration
 set(MPIMIN_VERSION ${MPIMIN_MAJOR}.${MPIMIN_MINOR}.${MPIMIN_PATCH})
