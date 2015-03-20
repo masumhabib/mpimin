@@ -15,16 +15,15 @@ set(CMAKE_VERBOSE_MAKEFILE      off)
 #set(LINK_SEARCH_START_STATIC    on)
 #set(CMAKE_BUILD_TYPE "Debug")
 
-
-# Add machine specific local usr path for locally compiled libraries
-include(cmake/machines/rivanna)
-
 # Start configuration
 set(MPIMIN_VERSION ${MPIMIN_MAJOR}.${MPIMIN_MINOR}.${MPIMIN_PATCH})
 message(STATUS "Configuring MPIMIN ${MPIMIN_VERSION}")
 message(STATUS "System: ${CMAKE_SYSTEM_NAME} ${CMAKE_SYSTEM_PROCESSOR}")
 
 project(mpimin CXX)
+
+# For custom cmake scripts
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 # Options
 # -----------------------------------------------------------------------------
